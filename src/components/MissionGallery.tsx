@@ -62,9 +62,9 @@ function ProjectCard({ title, description, progress, goal, raised, image, classN
               <span className="text-white drop-shadow-md">تم جمع: {raised}</span>
               <span className="text-gold drop-shadow-md">الهدف: {goal}</span>
             </div>
-            <div className="w-full bg-white/20 rounded-full h-3 backdrop-blur-md overflow-hidden border border-white/10 p-[2px]">
+            <div className="w-full bg-white/20 rounded-full h-4 backdrop-blur-md overflow-hidden border border-white/10 p-[2px] shadow-inner">
               <motion.div 
-                className="bg-gradient-to-l from-gold to-yellow-400 h-full rounded-full relative shadow-[0_0_10px_rgba(212,175,55,0.8)]" 
+                className="bg-gradient-to-l from-gold via-yellow-400 to-yellow-200 h-full rounded-full relative shadow-[0_0_15px_rgba(212,175,55,1)]" 
                 initial={{ width: 0 }}
                 whileInView={{ width: `${progress}%` }}
                 viewport={{ once: true }}
@@ -80,9 +80,9 @@ function ProjectCard({ title, description, progress, goal, raised, image, classN
         <div className="absolute bottom-6 left-8 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex justify-end">
           <button 
             className="flex items-center gap-2 text-[#021A11] bg-gradient-to-l from-gold to-yellow-500 px-6 py-3 rounded-2xl font-black shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
-            aria-label={`اكتشف المزيد عن ${title}`}
+            aria-label={`ارك في الأجر لـ ${title}`}
           >
-            <span>اكتشف المزيد</span>
+            <span>شارك في الأجر الآن</span>
             <ArrowLeft className="w-5 h-5" />
           </button>
         </div>
@@ -105,13 +105,13 @@ export default function MissionGallery() {
             <span className="text-gold font-bold tracking-widest text-sm uppercase px-5 py-2 border border-gold/30 rounded-full bg-gold/5 shadow-sm">مجالات العطاء</span>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-[#021A11] mb-6 drop-shadow-sm"
+            className="text-4xl md:text-5xl lg:text-5xl font-black text-[#021A11] mb-6 drop-shadow-sm leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            مشاريعنا الحالية
+            بصمات عطائكم في خدمة <span className="text-gold">ضيوف الرحمن</span>
           </motion.h2>
           <motion.p 
             className="text-lg md:text-xl text-emerald/80 max-w-2xl mx-auto font-light leading-relaxed"

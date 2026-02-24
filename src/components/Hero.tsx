@@ -38,8 +38,8 @@ export default function Hero() {
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black leading-tight drop-shadow-2xl">
             كرم الوفادة <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-l from-gold via-yellow-300 to-white font-bold text-4xl md:text-5xl lg:text-7xl block mt-4 pb-2">
-              شرف الخدمة في أطهر البقاع
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-gold via-yellow-300 to-white font-black text-5xl md:text-6xl lg:text-7xl block mt-4 pb-2 drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+              كن جزءاً من إرث الكرم في أطهر بقاع الأرض
             </span>
           </h1>
           <p className="text-lg md:text-2xl font-light opacity-95 drop-shadow-lg max-w-2xl leading-relaxed text-gray-200">
@@ -70,7 +70,7 @@ export default function Hero() {
               {[50, 100, 500].map((amount) => (
                 <button 
                   key={amount}
-                  className="bg-black/20 border border-white/20 hover:bg-gold hover:text-emerald hover:border-gold transition-all duration-300 py-4 rounded-2xl text-white font-bold text-xl md:text-2xl relative overflow-hidden group shadow-inner"
+                  className="bg-black/40 border border-white/30 hover:bg-gold hover:text-[#021A11] hover:border-gold transition-all duration-300 py-4 rounded-2xl text-white font-black text-xl md:text-2xl relative overflow-hidden group shadow-[0_4px_15px_rgba(0,0,0,0.5)]"
                 >
                   <span className="relative z-10">{amount} ﷼</span>
                   <div className="absolute inset-0 bg-gradient-to-t from-gold to-yellow-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
@@ -82,14 +82,21 @@ export default function Hero() {
               <input 
                 type="number" 
                 placeholder="مبلغ مخصص (﷼)" 
-                className="w-full bg-black/20 border border-white/20 rounded-2xl py-5 px-6 text-white placeholder:text-gray-300 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/50 transition-all text-xl shadow-inner font-medium"
+                className="w-full bg-black/40 border border-white/30 rounded-2xl py-5 px-6 text-white placeholder:text-gray-300 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/50 transition-all text-xl shadow-[0_4px_15px_rgba(0,0,0,0.5)] font-bold"
               />
             </div>
 
-            <button className="relative overflow-hidden w-full bg-gradient-to-l from-gold to-yellow-400 text-[#021A11] py-5 rounded-2xl font-black text-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all transform hover:-translate-y-1 group z-10">
-              <span className="relative z-10 flex items-center justify-center gap-2">تبرع الآن</span>
-              <div className="absolute inset-0 bg-white/30 translate-x-full group-hover:translate-x-0 transition-transform duration-700 skew-x-12"></div>
-            </button>
+            <div className="flex flex-col gap-4 relative z-10">
+              <button className="relative overflow-hidden w-full bg-gradient-to-l from-gold to-yellow-400 text-[#021A11] py-5 rounded-2xl font-black text-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all transform hover:-translate-y-1 group">
+                <span className="relative z-10 flex items-center justify-center gap-2">شارك في الأجر الآن</span>
+                <div className="absolute inset-0 bg-white/30 translate-x-full group-hover:translate-x-0 transition-transform duration-700 skew-x-12"></div>
+              </button>
+              
+              <button className="relative w-full border-2 border-white/40 text-white hover:bg-white/10 hover:border-white py-4 rounded-2xl font-bold text-xl transition-all flex justify-center items-center gap-3">
+                <span>إهداء تبرع</span>
+                <span className="text-xl">🎁</span>
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

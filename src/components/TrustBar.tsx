@@ -59,7 +59,7 @@ function Counter({ end, label, icon, suffix = "", delay = 0 }: CounterProps) {
         {icon}
       </div>
       
-      <div className="text-4xl lg:text-5xl font-black mb-2 tabular-nums text-[#021A11] transform group-hover:-translate-y-1 transition-transform duration-300 drop-shadow-sm">
+      <div className="text-5xl lg:text-6xl font-black mb-2 tabular-nums text-[#021A11] transform group-hover:-translate-y-1 transition-transform duration-300 drop-shadow-md">
         +{count.toLocaleString()}{suffix}
       </div>
       
@@ -74,11 +74,19 @@ export default function TrustBar() {
   return (
     <section id="trust-bar" className="relative w-full z-30 -mt-24 px-6">
       <div className="container mx-auto">
-        <div className="bg-white/80 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-white p-6 relative overflow-hidden">
+        <div className="bg-[#F8F5F0]/90 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-white p-6 relative overflow-hidden">
           
+          {/* Subtle Paper Texture Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.4] mix-blend-multiply pointer-events-none"
+            style={{ 
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+            }}
+          />
+
           {/* Subtle background decoration inside the card */}
-          <div className="absolute -top-32 -right-32 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-emerald/5 rounded-full blur-3xl" />
+          <div className="absolute -top-32 -right-32 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-emerald/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 lg:divide-x-reverse lg:divide-x divide-emerald/10 relative z-10">
             <Counter 

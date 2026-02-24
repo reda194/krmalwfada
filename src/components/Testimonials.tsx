@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useCallback } from "react";
 
 const testimonials = [
   {
@@ -22,10 +25,21 @@ const testimonials = [
     name: "سعد المولد",
     role: "قائد فريق إرشاد المتطوعين",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200",
+  },
+  {
+    quote: "لم أتخيل أن أجد كل هذه الرعاية والاهتمام الطبي المباشر في وسط الزحام. أنتم حقاً عيون ساهرة لخدمة بيت الله.",
+    name: "فاطمة أحمد",
+    role: "حاجة من مصر",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200",
   }
 ];
 
 export default function Testimonials() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, direction: "rtl", align: "start" },
+    [Autoplay({ delay: 5000, stopOnInteraction: true })]
+  );
+
   return (
     <section className="py-24 md:py-32 bg-[#021A11] relative overflow-hidden text-white">
       {/* Subtle Background Pattern */}
@@ -68,41 +82,42 @@ export default function Testimonials() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 relative group hover:bg-white/10 transition-colors duration-500 flex flex-col h-full"
-            >
-              <Quote className="absolute top-8 left-8 w-16 h-16 text-gold/10 group-hover:text-gold/20 transition-colors duration-500 pointer-events-none" />
-              
-              <div className="flex-1 relative z-10">
-                <p className="text-lg md:text-xl font-light leading-loose text-white/90 mb-10">
-                  &quot;{testimonial.quote}&quot;
-                </p>
-              </div>
+        {/* Embla Carousel Container */}
+        <div className="overflow-hidden" ref={emblaRef} dir="rtl">
+          <div className="flex -ml-4 md:-ml-8 transition-transform">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4 md:pl-8"
+              >
+                <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 relative group hover:bg-white/10 transition-colors duration-500 flex flex-col h-full h-[400px]">
+                  <Quote className="absolute top-8 left-8 w-16 h-16 text-gold/10 group-hover:text-gold/20 transition-colors duration-500 pointer-events-none" />
+                  
+                  <div className="flex-1 relative z-10 flex flex-col pt-8">
+                    <p className="text-lg md:text-xl font-light leading-loose text-white/90 mb-10 overflow-hidden line-clamp-4">
+                      &quot;{testimonial.quote}&quot;
+                    </p>
+                  </div>
 
-              <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6 relative z-10">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold/50">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                    sizes="56px"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
-                  <p className="text-sm font-light text-gold">{testimonial.role}</p>
+                  <div className="flex items-center gap-4 mt-auto border-t border-white/10 pt-6 relative z-10">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold/50 flex-shrink-0">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                        sizes="56px"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
+                      <p className="text-sm font-light text-gold">{testimonial.role}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

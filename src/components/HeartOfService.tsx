@@ -40,9 +40,10 @@ export default function HeartOfService() {
               <p>
                 لا يقتصر دورنا على تقديم الخدمات المادية فحسب، بل يتجاوز ذلك إلى العناية الروحية والنفسية، لنكون السند والمعين لكل من قصد مكة المكرمة والمشاعر المقدسة، محققين بذلك رؤية طموحة تواكب مكانة المملكة العالمية.
               </p>
-              <div className="pt-4 pb-2">
-                <blockquote className="font-medium text-xl md:text-2xl text-gold border-r-4 border-gold pr-8 py-4 bg-gradient-to-l from-gold/5 to-transparent italic rounded-l-2xl">
-                  &quot;خدمة الحاج والمعتمر اصطفاء إلهي وشرف نعتز به.&quot;
+              <div className="pt-8 pb-4 relative">
+                <div className="absolute top-2 right-2 text-6xl text-gold/20 font-serif leading-none select-none pointer-events-none">&quot;</div>
+                <blockquote className="relative z-10 font-black text-2xl md:text-3xl lg:text-4xl text-[#021A11] border-r-4 border-gold pr-8 py-6 bg-gradient-to-l from-gold/10 to-transparent leading-relaxed rounded-l-3xl shadow-sm">
+                  خدمة الحاج والمعتمر <span className="text-gold">اصطفاء إلهي</span> وشرف نعتز به.
                 </blockquote>
               </div>
             </div>

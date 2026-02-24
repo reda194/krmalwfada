@@ -40,13 +40,14 @@ export default function ImpactProcess() {
             <span className="text-gold font-bold tracking-widest text-sm uppercase px-5 py-2 border border-gold/30 rounded-full bg-gold/5 shadow-sm">دورة العمل</span>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-black text-[#021A11]"
+            className="text-4xl md:text-5xl font-black text-[#021A11] leading-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            كيف يصل <span className="text-transparent bg-clip-text bg-gradient-to-l from-gold to-yellow-500">عطاؤكم؟</span>
+            رحلة عطائك: <br className="md:hidden" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-gold to-yellow-500">من قلبك إلى يد ضيف الرحمن</span>
           </motion.h2>
         </div>
 

@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import ImpactPackages from "@/components/ImpactPackages";
 import MissionGallery from "@/components/MissionGallery";
 import ImpactProcess from "@/components/ImpactProcess";
+import ImpactMap from "@/components/ImpactMap";
 import HeartOfService from "@/components/HeartOfService";
 import Testimonials from "@/components/Testimonials";
 import Partners from "@/components/Partners";
@@ -19,6 +20,7 @@ export default function Home() {
       <ImpactPackages />
       <MissionGallery />
       <ImpactProcess />
+      <ImpactMap />
       <HeartOfService />
       <Testimonials />
       <Partners />

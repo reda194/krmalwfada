@@ -62,7 +62,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <button className="flex-1 relative overflow-hidden group bg-gradient-to-l from-gold to-yellow-500 text-[#021A11] py-5 px-8 rounded-full font-black text-xl hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] transition-all transform hover:-translate-y-1 z-10 flex text-center justify-center items-center gap-2">
-            <span className="relative z-10">تبرع الآن</span>
+            <span className="relative z-10">شارك في الأجر الآن</span>
             <ArrowLeft className="w-6 h-6 relative z-10 group-hover:-translate-x-2 transition-transform" />
             <div className="absolute inset-0 bg-white/30 translate-x-full group-hover:translate-x-0 transition-transform duration-700 skew-x-12 z-0"></div>
           </button>
