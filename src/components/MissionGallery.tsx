@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
+import Link from "next/link";
 
 interface ProjectCardProps {
   title: string;
@@ -77,14 +78,15 @@ function ProjectCard({ title, description, progress, goal, raised, image, classN
         </div>
 
         {/* Action Button (Now strictly anchored to the absolute bottom and appears on hover smoothly) */}
-        <div className="absolute bottom-6 left-8 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex justify-end">
-          <button 
+        <div className="absolute bottom-6 left-8 right-8 z-30 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto flex justify-end">
+          <Link
+            href="/donate"
             className="flex items-center gap-2 text-[#021A11] bg-gradient-to-l from-gold to-yellow-500 px-6 py-3 rounded-2xl font-black shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
-            aria-label={`ارك في الأجر لـ ${title}`}
+            aria-label={`شارك في الأجر الآن - ${title}`}
           >
             <span>شارك في الأجر الآن</span>
             <ArrowLeft className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </Tilt>
     </motion.div>
@@ -134,7 +136,7 @@ export default function MissionGallery() {
             progress={75}
             raised="750,000 ﷼"
             goal="1,000,000 ﷼"
-            image="/images/water_project_1771963641569.png"
+            image="/images/water_project_1771963641569.jpg"
             className="md:col-span-2 md:row-span-2"
             delay={0.1}
           />
@@ -146,7 +148,7 @@ export default function MissionGallery() {
             progress={45}
             raised="450,000 ﷼"
             goal="1,000,000 ﷼"
-            image="/images/meals_project_1771963657322.png"
+            image="/images/meals_project_1771963657322.jpg"
             className="md:col-span-1 md:row-span-1"
             delay={0.2}
           />
@@ -158,7 +160,7 @@ export default function MissionGallery() {
             progress={90}
             raised="180,000 ﷼"
             goal="200,000 ﷼"
-            image="/images/guidance_project_1771963683464.png"
+            image="/images/guidance_project_1771963683464.jpg"
             className="md:col-span-1 md:row-span-1"
             delay={0.3}
           />
@@ -170,7 +172,7 @@ export default function MissionGallery() {
             progress={30}
             raised="1,500,000 ﷼"
             goal="5,000,000 ﷼"
-            image="/images/hosting_project_1771963699446.png"
+            image="/images/hosting_project_1771963699446.jpg"
             className="md:col-span-3 md:row-span-1"
             delay={0.4}
           />

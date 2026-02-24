@@ -18,7 +18,7 @@ const scrollingPartners = [...partners, ...partners];
 
 export default function Partners() {
   return (
-    <section className="py-20 bg-sand relative overflow-hidden border-y border-gold/10">
+    <section id="partners" className="py-20 bg-sand relative overflow-hidden border-y border-gold/10">
       <div className="container mx-auto px-6 mb-12">
         <div className="text-center">
           <motion.h2 

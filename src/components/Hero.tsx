@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
       {/* High-Quality Majestic Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image 
-          src="/images/hero_bg_1771963627087.png" 
+          src="/images/hero_bg_1771963627087.jpg" 
           alt="Holy Kaaba Makkah"
           fill
           priority
@@ -61,15 +62,16 @@ export default function Hero() {
             {/* Elegant glass reflection diagonal */}
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/10 to-transparent pointer-events-none -translate-x-1/2 -skew-x-12" />
             
-            <h3 className="text-3xl font-black text-white mb-8 text-center flex items-center justify-center gap-3 drop-shadow-md relative z-10">
+            <h2 className="text-3xl font-black text-white mb-8 text-center flex items-center justify-center gap-3 drop-shadow-md relative z-10">
               <Heart className="w-8 h-8 text-gold fill-gold drop-shadow-lg" />
               <span>ساهم في العطاء</span>
-            </h3>
+            </h2>
             
             <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8 relative z-10">
               {[50, 100, 500].map((amount) => (
                 <button 
                   key={amount}
+                  type="button"
                   className="bg-black/40 border border-white/30 hover:bg-gold hover:text-[#021A11] hover:border-gold transition-all duration-300 py-4 rounded-2xl text-white font-black text-xl md:text-2xl relative overflow-hidden group shadow-[0_4px_15px_rgba(0,0,0,0.5)]"
                 >
                   <span className="relative z-10">{amount} ﷼</span>
@@ -79,23 +81,36 @@ export default function Hero() {
             </div>
 
             <div className="relative mb-8 z-10">
+              <label htmlFor="hero-custom-amount" className="sr-only">
+                مبلغ التبرع المخصص
+              </label>
               <input 
+                id="hero-custom-amount"
+                name="customDonationAmount"
                 type="number" 
+                min="1"
+                step="1"
                 placeholder="مبلغ مخصص (﷼)" 
                 className="w-full bg-black/40 border border-white/30 rounded-2xl py-5 px-6 text-white placeholder:text-gray-300 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/50 transition-all text-xl shadow-[0_4px_15px_rgba(0,0,0,0.5)] font-bold"
               />
             </div>
 
             <div className="flex flex-col gap-4 relative z-10">
-              <button className="relative overflow-hidden w-full bg-gradient-to-l from-gold to-yellow-400 text-[#021A11] py-5 rounded-2xl font-black text-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all transform hover:-translate-y-1 group">
+              <Link
+                href="/donate"
+                className="relative overflow-hidden w-full bg-gradient-to-l from-gold to-yellow-400 text-[#021A11] py-5 rounded-2xl font-black text-2xl hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all transform hover:-translate-y-1 group text-center"
+              >
                 <span className="relative z-10 flex items-center justify-center gap-2">شارك في الأجر الآن</span>
                 <div className="absolute inset-0 bg-white/30 translate-x-full group-hover:translate-x-0 transition-transform duration-700 skew-x-12"></div>
-              </button>
+              </Link>
               
-              <button className="relative w-full border-2 border-white/40 text-white hover:bg-white/10 hover:border-white py-4 rounded-2xl font-bold text-xl transition-all flex justify-center items-center gap-3">
+              <Link
+                href="/contact"
+                className="relative w-full border-2 border-white/40 text-white hover:bg-white/10 hover:border-white py-4 rounded-2xl font-bold text-xl transition-all flex justify-center items-center gap-3"
+              >
                 <span>إهداء تبرع</span>
                 <span className="text-xl">🎁</span>
-              </button>
+              </Link>
             </div>
           </div>
         </motion.div>
@@ -103,17 +118,19 @@ export default function Hero() {
 
       {/* Modern Scrolling Indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-30 flex flex-col items-center"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >
-        <div className="w-[2px] h-16 bg-gradient-to-b from-transparent via-gold to-gold relative overflow-hidden rounded-full mb-2">
-           <motion.div 
-             className="absolute top-0 w-full h-1/3 bg-white blur-sm"
-             animate={{ top: ['-50%', '150%'] }}
-             transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-           />
-        </div>
+        <a href="#donate" aria-label="الانتقال إلى باقات التبرع">
+          <div className="w-[2px] h-16 bg-gradient-to-b from-transparent via-gold to-gold relative overflow-hidden rounded-full mb-2">
+             <motion.div 
+               className="absolute top-0 w-full h-1/3 bg-white blur-sm"
+               animate={{ top: ['-50%', '150%'] }}
+               transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+             />
+          </div>
+        </a>
       </motion.div>
     </section>
   );

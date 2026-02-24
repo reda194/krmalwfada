@@ -5,7 +5,6 @@ import { Quote } from "lucide-react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { useCallback } from "react";
 
 const testimonials = [
   {
@@ -35,7 +34,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef] = useEmblaCarousel(
     { loop: true, direction: "rtl", align: "start" },
     [Autoplay({ delay: 5000, stopOnInteraction: true })]
   );
@@ -110,7 +109,7 @@ export default function Testimonials() {
                       />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
+                      <p className="font-bold text-white text-lg">{testimonial.name}</p>
                       <p className="text-sm font-light text-gold">{testimonial.role}</p>
                     </div>
                   </div>

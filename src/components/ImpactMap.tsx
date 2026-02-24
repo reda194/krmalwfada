@@ -106,22 +106,32 @@ export default function ImpactMap() {
               viewport={{ once: true }}
               transition={{ delay: loc.delay, type: "spring", stiffness: 200, damping: 15 }}
             >
-              <div 
-                className="relative group cursor-pointer"
-                onMouseEnter={() => setActiveLocation(loc.id)}
-                onMouseLeave={() => setActiveLocation(null)}
-              >
+              <div className="relative group">
                 {/* Pulsing ring */}
                 <div className="absolute -inset-4 rounded-full border-2 border-gold opacity-30 animate-ping" />
                 <div className="absolute -inset-2 rounded-full border-2 border-emerald opacity-20 animate-pulse delay-75" />
                 
                 {/* Marker Center */}
-                <div className="relative w-10 h-10 bg-gradient-to-br from-gold to-yellow-500 rounded-full shadow-lg flex items-center justify-center text-[#021A11] z-10 hover:scale-110 transition-transform">
+                <button
+                  type="button"
+                  className="relative w-10 h-10 bg-gradient-to-br from-gold to-yellow-500 rounded-full shadow-lg flex items-center justify-center text-[#021A11] z-10 hover:scale-110 focus-visible:scale-110 transition-transform"
+                  aria-label={`إظهار تفاصيل ${loc.name}`}
+                  aria-expanded={activeLocation === loc.id}
+                  aria-controls={`impact-location-${loc.id}`}
+                  onClick={() =>
+                    setActiveLocation((prev) => (prev === loc.id ? null : loc.id))
+                  }
+                  onMouseEnter={() => setActiveLocation(loc.id)}
+                  onMouseLeave={() => setActiveLocation(null)}
+                  onFocus={() => setActiveLocation(loc.id)}
+                  onBlur={() => setActiveLocation(null)}
+                >
                   <MapPin className="w-5 h-5" fill="currentColor" strokeWidth={1} />
-                </div>
+                </button>
 
                 {/* Interactive Tooltip / Info Card */}
                 <div 
+                  id={`impact-location-${loc.id}`}
                   className={`absolute top-1/2 -translate-y-1/2 right-14 w-64 bg-white/95 backdrop-blur-xl border border-gold/20 shadow-2xl rounded-2xl p-5 transition-all duration-300 pointer-events-none origin-right z-50 ${
                     activeLocation === loc.id ? "opacity-100 scale-100" : "opacity-0 scale-95"
                   }`}

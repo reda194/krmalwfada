@@ -28,7 +28,7 @@ const steps = [
 
 export default function ImpactProcess() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section id="impact" className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.div 

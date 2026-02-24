@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeartOfService() {
   return (
@@ -49,12 +50,15 @@ export default function HeartOfService() {
             </div>
             
             <div className="pt-2">
-              <button className="relative overflow-hidden group border-2 border-gold text-[#021A11] px-10 py-5 rounded-full font-black text-xl transition-all shadow-[0_10px_30px_rgba(212,175,55,0.15)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.3)] hover:-translate-y-1">
+              <Link
+                href="/about#story"
+                className="relative overflow-hidden group border-2 border-gold text-[#021A11] px-10 py-5 rounded-full font-black text-xl transition-all shadow-[0_10px_30px_rgba(212,175,55,0.15)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.3)] hover:-translate-y-1 inline-flex"
+              >
                 <span className="relative z-10 flex items-center gap-3">
                   تعرف على قصص متطوعينا
                 </span>
                 <div className="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
-              </button>
+              </Link>
             </div>
           </motion.div>
 
@@ -71,7 +75,7 @@ export default function HeartOfService() {
             
             <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/5 group">
               <Image 
-                src="/images/guidance_project_1771963683464.png"
+                src="/images/guidance_project_1771963683464.jpg"
                 alt="Saudi volunteer helping a pilgrim"
                 fill
                 className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"

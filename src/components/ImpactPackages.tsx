@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import { Check, Heart } from "lucide-react";
+import Link from "next/link";
 
 const packages = [
   {
@@ -124,7 +125,8 @@ export default function ImpactPackages() {
                     ))}
                   </div>
 
-                  <button 
+                  <Link
+                    href="/donate"
                     className={`w-full py-4 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-2 group ${
                       pkg.popular 
                         ? "bg-gradient-to-l from-gold to-yellow-500 text-[#021A11] shadow-[0_10px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_15px_30px_rgba(212,175,55,0.5)] hover:-translate-y-1" 
@@ -133,7 +135,7 @@ export default function ImpactPackages() {
                   >
                     <span>ساهم الآن</span>
                     <Heart className={`w-5 h-5 ${pkg.popular ? "text-[#021A11]" : ""} group-hover:fill-current`} />
-                  </button>
+                  </Link>
                 </div>
               </Tilt>
             </motion.div>
