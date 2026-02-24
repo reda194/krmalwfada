@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Tilt from "react-parallax-tilt";
 
 interface ProjectCardProps {
   title: string;
@@ -18,60 +19,74 @@ interface ProjectCardProps {
 function ProjectCard({ title, description, progress, goal, raised, image, className = "", delay = 0 }: ProjectCardProps) {
   return (
     <motion.div 
-      className={`group relative overflow-hidden rounded-[2.5rem] bg-[#021A11] shadow-2xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.3)] transition-shadow duration-700 border border-white/5 ${className}`}
+      className={`h-full ${className}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay }}
     >
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Superior gradient logic for bento sizing */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 transition-opacity duration-700 opacity-90 group-hover:opacity-100`} />
-        
-        {/* Next.js Image for optimization and rendering speed */}
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover object-center transition-transform duration-1000 group-hover:scale-105 opacity-80"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      <Tilt 
+        tiltMaxAngleX={4} 
+        tiltMaxAngleY={4} 
+        perspective={1000} 
+        transitionSpeed={1500} 
+        scale={1.02}
+        glareEnable={true}
+        glareMaxOpacity={0.15}
+        glareColor="white"
+        glarePosition="bottom"
+        className="group relative overflow-hidden rounded-[2.5rem] bg-[#021A11] shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] transition-shadow duration-700 border border-white/5 h-full"
+      >
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {/* Superior gradient logic for bento sizing */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 transition-opacity duration-700 opacity-90 group-hover:opacity-100" />
+          
+          {/* Next.js Image for optimization and rendering speed */}
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover object-center transition-transform duration-1000 group-hover:scale-105 opacity-80"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
 
-      <div className="relative z-20 h-full flex flex-col justify-end p-8 md:p-10 text-white">
-        <h3 className="text-3xl font-black mb-3 drop-shadow-lg transform group-hover:-translate-y-2 transition-transform duration-500 text-white">{title}</h3>
-        <p className="text-gray-300 text-sm md:text-base mb-8 line-clamp-2 drop-shadow-md font-light leading-relaxed max-w-lg transform group-hover:-translate-y-2 transition-transform duration-500 delay-75">{description}</p>
-        
-        {/* Progress Bar */}
-        <div className="mb-6 transform group-hover:-translate-y-2 transition-transform duration-500 delay-100">
-          <div className="flex justify-between text-sm mb-3 font-bold">
-            <span className="text-white drop-shadow-md">تم جمع: {raised}</span>
-            <span className="text-gold drop-shadow-md">الهدف: {goal}</span>
-          </div>
-          <div className="w-full bg-white/20 rounded-full h-3 backdrop-blur-md overflow-hidden border border-white/10 p-[2px]">
-            <motion.div 
-              className="bg-gradient-to-l from-gold to-yellow-400 h-full rounded-full relative shadow-[0_0_10px_rgba(212,175,55,0.8)]" 
-              initial={{ width: 0 }}
-              whileInView={{ width: `${progress}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: delay + 0.3, ease: "easeOut" }}
-            >
-              <div className="absolute inset-0 bg-white/30 w-full h-full animate-[shimmer_2s_infinite]"></div>
-            </motion.div>
+        {/* Content Container (Pushes content up further on hover to prevent overlap) */}
+        <div className="relative z-20 h-full flex flex-col justify-end p-8 md:p-10 text-white transform group-hover:-translate-y-16 transition-transform duration-500 ease-out">
+          <h3 className="text-3xl font-black mb-3 drop-shadow-lg text-white">{title}</h3>
+          <p className="text-gray-300 text-sm md:text-base mb-8 line-clamp-2 drop-shadow-md font-light leading-relaxed max-w-lg">{description}</p>
+          
+          {/* Progress Bar */}
+          <div className="mb-2">
+            <div className="flex justify-between text-sm mb-3 font-bold">
+              <span className="text-white drop-shadow-md">تم جمع: {raised}</span>
+              <span className="text-gold drop-shadow-md">الهدف: {goal}</span>
+            </div>
+            <div className="w-full bg-white/20 rounded-full h-3 backdrop-blur-md overflow-hidden border border-white/10 p-[2px]">
+              <motion.div 
+                className="bg-gradient-to-l from-gold to-yellow-400 h-full rounded-full relative shadow-[0_0_10px_rgba(212,175,55,0.8)]" 
+                initial={{ width: 0 }}
+                whileInView={{ width: `${progress}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: delay + 0.3, ease: "easeOut" }}
+              >
+                <div className="absolute inset-0 bg-white/30 w-full h-full animate-[shimmer_2s_infinite]"></div>
+              </motion.div>
+            </div>
           </div>
         </div>
 
-        {/* Action Button that reveals on hover (or stays visible on mobile slightly) */}
-        <div className="overflow-hidden absolute bottom-0 right-0 p-8 md:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
+        {/* Action Button (Now strictly anchored to the absolute bottom and appears on hover smoothly) */}
+        <div className="absolute bottom-6 left-8 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto flex justify-end">
           <button 
-            className="flex items-center gap-2 text-[#021A11] bg-gradient-to-l from-gold to-yellow-500 px-6 py-3 rounded-2xl font-black transition-transform hover:scale-105 shadow-xl"
+            className="flex items-center gap-2 text-[#021A11] bg-gradient-to-l from-gold to-yellow-500 px-6 py-3 rounded-2xl font-black shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300"
             aria-label={`اكتشف المزيد عن ${title}`}
           >
             <span>اكتشف المزيد</span>
             <ArrowLeft className="w-5 h-5" />
           </button>
         </div>
-      </div>
+      </Tilt>
     </motion.div>
   );
 }
