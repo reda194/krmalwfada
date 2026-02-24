@@ -1,10 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
+import ImpactPackages from "@/components/ImpactPackages";
 import MissionGallery from "@/components/MissionGallery";
 import ImpactProcess from "@/components/ImpactProcess";
-import Partners from "@/components/Partners";
 import HeartOfService from "@/components/HeartOfService";
+import Testimonials from "@/components/Testimonials";
+import Partners from "@/components/Partners";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -13,10 +16,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustBar />
+      <ImpactPackages />
       <MissionGallery />
       <ImpactProcess />
-      <Partners />
       <HeartOfService />
+      <Testimonials />
+      <Partners />
+      <FinalCTA />
       <Footer />
     </main>
   );
