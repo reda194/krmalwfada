@@ -10,10 +10,11 @@ import Testimonials from "@/components/Testimonials";
 import Partners from "@/components/Partners";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import MobileDonateBar from "@/components/MobileDonateBar";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen pb-28 md:pb-0">
       <Navbar />
       <Hero />
       <TrustBar />
@@ -26,6 +27,7 @@ export default function Home() {
       <Partners />
       <FinalCTA />
       <Footer />
+      <MobileDonateBar />
     </main>
   );
 }
